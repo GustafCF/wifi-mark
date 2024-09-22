@@ -1,5 +1,7 @@
 package com.br.api.wifi_marketing.config;
 
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -29,6 +31,14 @@ public class AdminUserConfig implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+        
+        // roleRepository.deleteAll();
+
+        // RoleModel r1 = new RoleModel(1L, "admin");
+        // RoleModel r2 = new RoleModel(2L, "basic");
+        
+        // roleRepository.saveAll(Arrays.asList(r1,r2));
+
         var roleAdmin = roleRepository.findByName(RoleModel.Values.ADMIN.name());
 
         var userAdmin = userRepository.findByUserName("admin");
