@@ -5,6 +5,7 @@ import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.br.api.wifi_marketing.models.dtos.LoginRequest;
 import com.br.api.wifi_marketing.models.dtos.LoginResponse;
 import com.br.api.wifi_marketing.services.AuthService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/auth")
 public class TokenController {
