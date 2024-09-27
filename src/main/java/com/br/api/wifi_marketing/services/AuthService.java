@@ -21,7 +21,6 @@ import com.br.api.wifi_marketing.models.dtos.LoginResponse;
 import com.br.api.wifi_marketing.repositories.RoleRepository;
 import com.br.api.wifi_marketing.repositories.UserRepository;
 
-import io.micrometer.core.ipc.http.HttpSender;
 import jakarta.transaction.Transactional;
 
 @Service

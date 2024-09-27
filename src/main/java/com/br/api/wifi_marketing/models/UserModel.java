@@ -23,7 +23,7 @@ import jakarta.persistence.Table;
 @Table(name = "TB_USERS")
 public class UserModel implements Serializable {
 
-    private static final long seialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class UserModel implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    public Set<RoleModel> roles = new HashSet<>();
+    private Set<RoleModel> roles = new HashSet<>();
 
     public UserModel() {
     }
