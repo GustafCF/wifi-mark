@@ -34,10 +34,10 @@ public class AdminUserConfig implements CommandLineRunner {
         
         // roleRepository.deleteAll();
 
-        // RoleModel r1 = new RoleModel(1L, "admin");
-        // RoleModel r2 = new RoleModel(2L, "basic");
+        RoleModel r1 = new RoleModel(1L, "admin");
+        RoleModel r2 = new RoleModel(2L, "basic");
         
-        // roleRepository.saveAll(Arrays.asList(r1,r2));
+        roleRepository.saveAll(Arrays.asList(r1,r2));
 
         var roleAdmin = roleRepository.findByName(RoleModel.Values.ADMIN.name());
 
