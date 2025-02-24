@@ -1,0 +1,11 @@
+#response .alert {
+    word-wrap: break-word; 
+    white-space: pre-wrap;
+}
+
+#token {
+    /* background-color: #f8f9fa;  */
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+}
