@@ -1,5 +1,6 @@
 package com.br.api.wifi_marketing.models;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB_USERS")
 public class UserModel implements Serializable {
+    @Serial
     private static final long seialVersionUID = 1L;
 
     @Id
@@ -45,11 +47,9 @@ public class UserModel implements Serializable {
     public UserModel() {
     }
 
-    public UserModel(Long id, String userName, String password, Set<RoleModel> roles) {
-        this.id = id;
+    public UserModel(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.roles = roles;
     }
 
     public Long getId() {

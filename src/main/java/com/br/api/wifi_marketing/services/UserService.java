@@ -1,5 +1,8 @@
 package com.br.api.wifi_marketing.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,7 +31,6 @@ public class UserService {
 
     @Transactional
     public UserModel cadastrar(CreateUserDto entity){
-        
         var basicRole = roleRepository.findByName(RoleModel.Values.BASIC.name());
         var userFromDB = userRepository.findByUserName(entity.name());
         
@@ -44,4 +46,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public List<UserModel> findAll(){
+        return userRepository.findAll();
+    }
+
+    public UserModel findById(Long id){
+        Optional<UserModel> user = userRepository.findById(id);
+        return user.get();
+    }
+
+    public void delete(Long id){
+        userRepository.deleteById(id);
+    }
 }

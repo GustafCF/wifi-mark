@@ -1,0 +1,56 @@
+services:
+  mysql_db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=123
+      - MYSQL_DATABASE=db_wifi
+      - MYSQL_ROOT_PASSWORD=123
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8000:80"
+    environment:
+      - PMA_HOST=mysql_db
+    depends_on:
+      - mysql_db
+    networks:
+      - app-network
+
+  app:
+    image: openjdk:22
+    container_name: wifi_mark_app
+    depends_on:
+      - mysql_db  
+    build: 
+      context: "./"
+      dockerfile: Dockerfile
+    working_dir: /usr/src/house 
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_db:3306/db_wifi
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+      - JWT_PUBLIC_KEY=classpath:newkey.pub
+      - JWT_PRIVATE_KEY=classpath:newkey.key
+    volumes:
+      - ./src/:/usr/src/house  
+    networks:
+      - app-network    
+
+volumes:
+  mysqlvolume:
+
+networks:
+  app-network:
