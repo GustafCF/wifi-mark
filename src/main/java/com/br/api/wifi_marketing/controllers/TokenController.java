@@ -31,10 +31,4 @@ public class TokenController {
         return ResponseEntity.ok().body(loginResponse);
     }
 
-    @PostMapping(value = "/cad")
-    public ResponseEntity<UserModel> cadastro(@RequestBody CreateUserDto dto){
-        UserModel user = service.cadastrar(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).build();
-    }
 }
