@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#loginForm').submit(function(event) {
-        event.preventDefault(); // Evita o envio tradicional do formulário
+        event.preventDefault();
 
         const loginData = {
             name: $('#username').val(),

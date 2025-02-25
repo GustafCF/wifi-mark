@@ -11,4 +11,9 @@ public class GlobalController {
         return "index";
     }
 
+    @GetMapping("/cadastro")
+    public String cadastro(){
+        return "cadastro";
+    }
+
 }

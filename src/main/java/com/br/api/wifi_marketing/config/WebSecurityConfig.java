@@ -44,8 +44,8 @@ public class WebSecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/auth/cad").permitAll()
-                    .requestMatchers("/", "/index", "/static/**", "/js/**", "/css/**", "/images/**").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/us/cad").permitAll()
+                    .requestMatchers("/", "/cadastro", "/static/**", "/js/**", "/css/**", "/images/**").permitAll()
                 .anyRequest().authenticated())
                 .csrf(csrf -> csrf.disable())
                 .headers(headers -> headers.frameOptions().disable())
@@ -59,7 +59,7 @@ public class WebSecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.addAllowedOriginPattern("*"); // Permite todos os padrões, mas não é recomendado em produção
+        configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
 
