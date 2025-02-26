@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('#loginForm').submit(function(event) {
+    $('#loginForm').off('submit').submit(function(event) {
         event.preventDefault();
 
         const loginData = {
-            name: $('#username').val(),
+            username: $('#username').val(),
             password: $('#password').val()
         };
 

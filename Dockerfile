@@ -1,4 +1,4 @@
-FROM openjdk:22-jdk-oracle
+FROM openjdk:21-jdk
 RUN mkdir /app
 WORKDIR /app
 COPY  target/*.jar /app/app.jar

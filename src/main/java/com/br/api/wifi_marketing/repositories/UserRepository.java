@@ -9,5 +9,5 @@ import com.br.api.wifi_marketing.models.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-    Optional<UserModel> findByUserName(String userName);
+    Optional<UserModel> findByUsername(String userName);
 }

@@ -41,7 +41,7 @@ public class AdminUserConfig implements CommandLineRunner {
 
         var roleAdmin = roleRepository.findByName(RoleModel.Values.ADMIN.name());
 
-        var userAdmin = userRepository.findByUserName("admin");
+        var userAdmin = userRepository.findByUsername("admin");
 
         userAdmin.ifPresentOrElse(
                 user -> {
@@ -49,7 +49,7 @@ public class AdminUserConfig implements CommandLineRunner {
                 },
                 () -> {
                     var user = new UserModel();
-                    user.setUserName("admin");
+                    user.setUsername("admin");
                     user.setPassword(passwordEncoder.encode("123"));
                     user.getRoles().add(roleAdmin);
                     userRepository.save(user);

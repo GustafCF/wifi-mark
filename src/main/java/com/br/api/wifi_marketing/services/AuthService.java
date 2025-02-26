@@ -29,7 +29,7 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
-        var user = userRepository.findByUserName(loginRequest.name());
+        var user = userRepository.findByUsername(loginRequest.username());
 
         if (user.isEmpty() || !user.get().LoginValidation(loginRequest, passwordEncoder)) {
             throw new BadCredentialsException("user or password is invalid!");

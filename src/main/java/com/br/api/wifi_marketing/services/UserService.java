@@ -32,17 +32,16 @@ public class UserService {
     @Transactional
     public UserModel cadastrar(CreateUserDto entity){
         var basicRole = roleRepository.findByName(RoleModel.Values.BASIC.name());
-        var userFromDB = userRepository.findByUserName(entity.name());
+        var userFromDB = userRepository.findByUsername(entity.username());
         
         if(userFromDB.isPresent()){
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
         var user = new UserModel();
-        user.setUserName(entity.name());
+        user.setUsername(entity.username());
         user.setPassword(passwordEncoder.encode(entity.password()));
         user.getRoles().add(basicRole);
-        
         return userRepository.save(user);
     }
 
