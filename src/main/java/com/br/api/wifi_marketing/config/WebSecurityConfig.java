@@ -42,13 +42,13 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/us/cad").permitAll()
-                    .requestMatchers("/", "/cadastro", "/static/**", "/js/**", "/css/**", "/images/**").permitAll() 
-                    .anyRequest().authenticated()) 
+                    .requestMatchers("/h2-console/**").permitAll()
+                    .requestMatchers("/", "/cadastro", "/static/**", "/js/**", "/css/**", "/images/**" ,"/favicon.ico/**", "/index").permitAll()
+                    .anyRequest().authenticated())
                 .csrf(csrf -> csrf.disable()) 
                 .headers(headers -> headers.frameOptions().disable()) 
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
         return http.build();
     }
 
@@ -68,5 +68,4 @@ public class WebSecurityConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

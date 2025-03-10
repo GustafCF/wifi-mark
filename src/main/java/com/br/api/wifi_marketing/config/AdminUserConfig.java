@@ -29,19 +29,18 @@ public class AdminUserConfig implements CommandLineRunner {
     }
 
     @Override
-    @Transactional
     public void run(String... args) throws Exception {
         
-        // roleRepository.deleteAll();
+        roleRepository.deleteAll();
 
-        RoleModel r1 = new RoleModel(1L, "admin");
-        RoleModel r2 = new RoleModel(2L, "basic");
+        RoleModel r1 = new RoleModel(1L, "ADMIN");
+        RoleModel r2 = new RoleModel(2L, "BASIC");
         
         roleRepository.saveAll(Arrays.asList(r1,r2));
 
         var roleAdmin = roleRepository.findByName(RoleModel.Values.ADMIN.name());
 
-        var userAdmin = userRepository.findByUsername("admin");
+        var userAdmin = userRepository.findByUsername("ADMIN");
 
         userAdmin.ifPresentOrElse(
                 user -> {

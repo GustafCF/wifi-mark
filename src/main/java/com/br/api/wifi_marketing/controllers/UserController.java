@@ -29,7 +29,7 @@ public class UserController {
     public ResponseEntity<UserModel> cadastro(@RequestBody CreateUserDto dto){
         UserModel user = service.cadastrar(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).body(user);
     }
 
     @GetMapping("/list")

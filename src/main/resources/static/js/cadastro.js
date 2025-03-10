@@ -18,7 +18,7 @@ $(document).ready(function() {
             success: function(response) {
                 $('#nameReponse').text(response.username);
                 $('#response').show();
-                alert('Usuário criado com sucesso!');
+                // alert('Usuário criado com sucesso!');
                 window.location.href = '/';
             },
             error: function(xhr) {

@@ -13,9 +13,12 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(loginData),
             success: function(response) {
-                $('#token').text(response.acessToken);
-                $('#expiresIn').text(response.expiresIn);
                 $('#response').show();
+                if(loginData.username === 'admin') {
+                    localStorage.setItem('token', response.acessToken);
+                    localStorage.setItem('username', loginData.username);
+                    window.location.href = '/index';
+                }
             },
             error: function(xhr) {
                 alert('Erro ao fazer login: ' + xhr.responseText);

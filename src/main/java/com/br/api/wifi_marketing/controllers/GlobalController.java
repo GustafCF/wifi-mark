@@ -8,7 +8,7 @@ public class GlobalController {
 
     @GetMapping("/")
     public String login(){
-        return "index";
+        return "login";
     }
 
     @GetMapping("/cadastro")
@@ -16,4 +16,8 @@ public class GlobalController {
         return "cadastro";
     }
 
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
 }

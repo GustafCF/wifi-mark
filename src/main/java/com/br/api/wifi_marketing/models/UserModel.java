@@ -9,10 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.br.api.wifi_marketing.models.dtos.LoginRequest;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,7 +34,7 @@ public class UserModel implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "TB_USER_ROLE",
             joinColumns = @JoinColumn(name = "user_id"),

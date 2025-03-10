@@ -25,7 +25,6 @@ services:
       - app-network
 
   app:
-    image: openjdk:22
     container_name: wifi_mark_app
     depends_on:
       - mysql_db  
@@ -42,6 +41,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=123
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+      - SPRING_PROFILES_ACTIVE=test
       - JWT_PUBLIC_KEY=classpath:newkey.pub
       - JWT_PRIVATE_KEY=classpath:newkey.key
     volumes:
